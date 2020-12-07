@@ -32,6 +32,9 @@ class NoteBook(tk.Frame):
         self.button_frame = tk.Frame(self)
         self.button_frame.grid(row=1, column=1)
 
+    def length(self):
+        return len(self.frames)
+
     def append(self, frame, text="Tab"):
         id = len(self.frames)
         command = partial(self.change_tab, None)
