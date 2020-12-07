@@ -7,7 +7,7 @@ from widgets.datetimewidget import DateTimeWidget
 from widgets.widgetchangerwidget import WidgetChangerWidget
 from widgets.alarmwidget import AlarmWidget
 from widgets.errorswidget import ErrorsWidget
-from widgets.taskswidget import taskswidget
+from widgets.taskswidget import TasksWidget
 
 class DraggableWindow(tk.Tk):
     def __init__(self, interrupt):
@@ -71,8 +71,8 @@ class App:
         self.errors = []
         self.changewidget()
 
-    def exception(self, *args):
-        tback = "".join(traceback.format_exception(*args))
+    def exception(self, etype, value, tb):
+        tback = "".join(traceback.format_exception(etype, value, tb))
         self.errors.append(tback)
 
     def mainloop(self):
@@ -92,7 +92,7 @@ class App:
 
     def taskswidget(self):
         self.closer()
-        self.widget = taskswidget(self)
+        self.widget = TasksWidget(self)
 
     def alarmwidget(self):
         self.closer()
@@ -101,10 +101,6 @@ class App:
     def errorsidget(self):
         self.closer()
         self.widget = ErrorsWidget(self)
-
-    def starter(self):
-        if self.widget is not None:
-            self.widget.starter(self)
 
     def updater(self):
         if self.widget is not None:
@@ -116,6 +112,7 @@ class App:
 
     def closer(self):
         if self.widget is not None:
+            self.root.geometry("")
             self.widget.closer()
 
     def changewidget(self, *args):
