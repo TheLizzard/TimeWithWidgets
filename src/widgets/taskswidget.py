@@ -25,7 +25,7 @@ class taskswidget(Widget):
         for widget in self.frame.winfo_children():
             widget.destroy()
         
-        with open(BASE_DIR+"alarms/tasks.json") as opFile:
+        with open(BASE_DIR+"tasks.json") as opFile:
             self.json = json.load(opFile)
 
         self.Tasks = self.json["tasks"]
@@ -58,18 +58,18 @@ class indivTaskFrame:
         
     def destroy(self):
         self.frame.destroy()
-        with open(BASE_DIR+"alarms/tasks.json") as opFile:
+        with open(BASE_DIR+"tasks.json") as opFile:
 
             self.json = json.load(opFile)
             self.json["tasks"].pop(self.json["tasks"].index(self.ob))
 
-        with open(BASE_DIR+"alarms/tasks.json","w") as opFile:
+        with open(BASE_DIR+"tasks.json","w") as opFile:
             json.dump(self.json,opFile,indent=4)
 
 class addTask:
     def __init__(self,master,obj):
         self.obj = obj
-        with open(BASE_DIR+"alarms/tasks.json") as opfile:
+        with open(BASE_DIR+"tasks.json") as opfile:
             self.store = json.load(opfile)
 			
         self.master = master
@@ -93,7 +93,7 @@ class addTask:
         self.store["tasks"].append(self.userEntry.get())
         self.userEntry.delete(0,tk.END)
 
-        with open(BASE_DIR+"alarms/tasks.json","w") as opfile:
+        with open(BASE_DIR+"tasks.json","w") as opfile:
             json.dump(self.store,opfile)
         
         self.obj.update()
