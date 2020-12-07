@@ -13,9 +13,14 @@ class WidgetChangerWidget(Widget):
                                  command=app.alarmwidget)
         self.button3 = tk.Button(self.frame, text="Errors",
                                  command=app.errorswidget)
+        self.button4 = tk.Button(self.frame, text="Tasks",
+                                 command=app.taskswidget)
+                                 
         self.button1.grid(row=1, column=1)
         self.button2.grid(row=1, column=2)
         self.button3.grid(row=1, column=3)
+        self.button4.grid(row=1, column=4)
+
         self.frame.grid(row=1, column=1)
 
     def closer(self):

@@ -7,7 +7,7 @@ from widgets.datetimewidget import DateTimeWidget
 from widgets.widgetchangerwidget import WidgetChangerWidget
 from widgets.alarmwidget import AlarmWidget
 from widgets.errorswidget import ErrorsWidget
-
+from widgets.taskswidget import taskswidget
 
 class DraggableWindow(tk.Tk):
     def __init__(self, interrupt):
@@ -89,6 +89,10 @@ class App:
     def datetimewidget(self):
         self.closer()
         self.widget = DateTimeWidget(self)
+
+    def taskswidget(self):
+        self.closer()
+        self.widget = taskswidget(self)
 
     def alarmwidget(self):
         self.closer()
