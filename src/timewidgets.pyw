@@ -8,6 +8,8 @@ from widgets.widgetchangerwidget import WidgetChangerWidget
 from widgets.alarmwidget import AlarmWidget
 from widgets.errorswidget import ErrorsWidget
 from widgets.taskswidget import TasksWidget
+from widgets.runnerwidget import RunnerWidget
+
 
 class DraggableWindow(tk.Tk):
     def __init__(self, interrupt):
@@ -101,6 +103,10 @@ class App:
     def errorsidget(self):
         self.closer()
         self.widget = ErrorsWidget(self)
+
+    def runnerwidget(self):
+        self.closer()
+        self.widget = RunnerWidget(self)
 
     def updater(self):
         if self.widget is not None:

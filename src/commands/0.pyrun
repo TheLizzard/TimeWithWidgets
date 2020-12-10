@@ -1,0 +1,17 @@
+# Import some GUI components
+showinfo = require(module="tkinter.messagebox", function="showinfo")
+if showinfo is None:
+    # tkinter isn't installed/setup
+    print("tkinter error")
+    exit()
+
+# Get the user's computer username
+getpass = require(module="getpass")
+if getpass is None:
+    showinfo("info", "No getpass module :-(")
+    exit()
+
+name = getpass.getuser()
+
+# Show a box saying hi to the user
+showinfo("info", "Hello %s!" % name)

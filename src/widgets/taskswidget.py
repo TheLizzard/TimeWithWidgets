@@ -42,12 +42,12 @@ class TasksWidget(Widget):
         """
         Read the file and store it in self.json
         """
-        with open(BASE_DIR+"Tasks\\tasks.json") as file:
+        with open(BASE_DIR+"tasks\\tasks.json") as file:
             self.json = json.load(file)
             self.tasks = self.json["tasks"] # Shallow copy
 
     def save(self):
-        with open(BASE_DIR+"Tasks\\tasks.json", "w") as file:
+        with open(BASE_DIR+"tasks\\tasks.json", "w") as file:
             json.dump(self.json, file, indent=4)
 
     def add_task(self):
@@ -66,7 +66,7 @@ class TasksWidget(Widget):
         task_name = frame.task_name
         self.tasks.remove(task_name)
 
-        with open(BASE_DIR+"Tasks\\tasks.json", "w") as file:
+        with open(BASE_DIR+"tasks\\tasks.json", "w") as file:
             json.dump(self.json, file, indent=4)
         frame.destroy()
 
